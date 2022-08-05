@@ -45,14 +45,6 @@ A completely free application for testing your knowledge on Linux
 ### Linux 101
 
 <details>
-<summary>What is Linux?</summary><br><b>
-
-[Wikipedia](https://en.wikipedia.org/wiki/Linux): "Linux is a family of open-source Unix-like operating systems based on the Linux kernel, an operating system kernel first released on September 17, 1991, by Linus Torvalds. Linux is typically packaged in a Linux distribution."
-
-[Red Hat](https://www.redhat.com/en/topics/linux/what-is-linux): "Linux® is an open source operating system (OS). An operating system is the software that directly manages a system’s hardware and resources, like CPU, memory, and storage. The OS sits between applications and hardware and makes the connections between all of your software and the physical resources that do the work."
-</b></details>
-
-<details>
 <summary>Explain what each of the following commands does and give an example on how to use it:
 
   * touch
@@ -325,16 +317,6 @@ The root of the filesystem. The beginning of the tree.
 False. No one can create file in /proc directly (certain operations can lead to files being created in /proc by the kernel).
 </b></details>
 
-<details>
-<summary>What can be found in /proc/cmdline?</summary><br><b>
-
-The command passed to the boot loader to run the kernel
-</b></details>
-
-<details>
-<summary>In which path can you find the system devices (e.g. block storage)?</summary><br><b>
-</b></details>
-
 <a name="questions-linux-permissions"></a>
 ### Permissions
 
@@ -371,11 +353,6 @@ It adds execute permissions to all sets i.e user, group and others
 </b></details>
 
 <details>
-<summary>What is the purpose of sticky bit?</summary><br><b>
-Its a bit that only allows the owner or the root user to delete or modify the file.
-</b></details>
-
-<details>
 <summary>What the following commands do?
 
   - chmod
@@ -398,21 +375,11 @@ True
 </b></details>
 
 <details>
-<summary>Explain what are ACLs. For what use cases would you recommend to use them?</summary><br><b>
-</b></details>
-
-<details>
 <summary>You try to create a file but it fails. Name at least three different reason as to why it could happen</summary><br><b>
 
 * No more disk space
 * No more inodes
 * No permissions
-</b></details>
-
-<details>
-<summary>A user accidentally executed the following <code>chmod -x $(which chmod)</code>. How to fix it?</summary><br><b>
-
-Using `sudo setfacl -m u::rx /usr/bin/chmod` will set the execute permissions on `chmod` for all the users. Post this, the `chmod` binary can be used as usual.
 </b></details>
 
 <a name="questions-linux-scenarios"></a>
@@ -421,19 +388,7 @@ Using `sudo setfacl -m u::rx /usr/bin/chmod` will set the execute permissions on
 <details>
 <summary>You would like to copy a file to a remote Linux host. How would you do?</summary><br><b>
 
-There are multiple ways to transfer files between hosts. Personal opinion: use `rsync`
-</b></details>
-
-<details>
-<summary>How to generate a random string?</summary><br><b>
-
-One way is to run the following: `cat /proc/sys/kernel/random/uuid`
-</b></details>
-
-<details>
-<summary>How to generate a random string of 7 characters?</summary><br><b>
-
-`mkpasswd -l 7`
+There are multiple ways to transfer files between hosts. Personal opinion: use `rsync`. Other option is to use `scp`.
 </b></details>
 
 <a name="questions-linux-systemd"></a>
@@ -489,7 +444,7 @@ To stop a service: `systemctl stop <service name>`
 <details>
 <summary>How to follow file's content as it being appended without opening the file every time?</summary><br><b>
 
-tail -f <file_name>
+`tail -f <file_name>` or better - `less +F <file_name>`
 </b></details>
 
 <details>
@@ -519,7 +474,7 @@ tail -f <file_name>
 <details>
 <summary>What are you using for debugging CPU related issues?</summary><br><b>
 
-<code>top</code> will show you how much CPU percentage each process consumes
+<code>top</code> or <code>htop</code>, will show you how much CPU percentage each process consumes
 <code>perf</code> is a great choice for sampling profiler and in general, figuring out what your CPU cycles are "wasted" on
 <code>flamegraphs</code> is great for CPU consumption visualization (http://www.brendangregg.com/flamegraphs.html)
 </b></details>
@@ -534,23 +489,11 @@ tail -f <file_name>
 </b></details>
 
 <details>
-<summary>Explain iostat output</summary><br><b>
-</b></details>
-
-<details>
-<summary>How to debug binaries?</summary><br><b>
-</b></details>
-
-<details>
-<summary>What is the difference between CPU load and utilization?</summary><br><b>
-</b></details>
-
-<details>
 <summary>How you measure time execution of a program?</summary><br><b>
 </b></details>
 
 <a name="questions-linux-kernel"></a>
-### Kernel
+### Kernel (advanced, feel free to skip this section)
 
 <details>
 <summary>What is a kernel, and what does it do?</summary><br><b>
@@ -820,7 +763,7 @@ I consider this as a good blog post to read more about it: https://shapeshed.com
 </b></details>
 
 <a name="questions-linux-boot"></a>
-### Boot Process
+### Boot Process (advanced, feel free to skip this section)
 
 <details>
 <summary>Tell me everything you know about the Linux boot process</summary><br><b>
@@ -841,7 +784,7 @@ Another way to ask this: what happens from the moment you turned on the server u
 </b></details>
 
 <a name="questions-linux-disk-fs"></a>
-### Disk and Filesystem
+### Disk and Filesystem (advanced, feel free to skip this section)
 
 <details>
 <summary>What's an inode?</summary><br><b>
@@ -978,7 +921,7 @@ False. /tmp is cleared upon system boot while /var/tmp is cleared every a couple
 </b></details>
 
 <a name="questions-linux-performance-analysis"></a>
-### Performance Analysis
+### Performance Analysis (advanced, feel free to skip this section)
 
 <details>
 <summary>How to check what is the current load average?</summary><br><b>
@@ -1197,7 +1140,7 @@ This is a great article on the topic: https://www.computerhope.com/jargon/f/file
 </b></details>
 
 <a name="questions-linux-security"></a>
-### Security
+### Security (advanced, feel free to skip this section)
 
 <details>
 <summary>What is chroot? In what scenarios would you consider using it?</summary><br><b>
@@ -1242,7 +1185,7 @@ If using the private key from the previous question then the command would be:
 </b></details>
 
 <a name="questions-linux-networking"></a>
-### Networking
+### Networking (advanced, feel free to skip this section)
 
 <details>
 <summary>How to list all the interfaces?</summary><br><b>
@@ -1443,24 +1386,6 @@ In addition, you can specify in a spec how a certain package will be installed -
 </b></details>
 
 <a name="questions-linux-dnf"></a>
-### DNF
-
-<details>
-<summary>What is DNF?</summary><br><b>
-
-From the [repo](https://github.com/rpm-software-management/dnf):
-
-"Dandified YUM (DNF) is the next upcoming major version of YUM. It does package management using RPM, libsolv and hawkey libraries."
-
-Official [docs](https://dnf.readthedocs.io/en/latest/)
-
-</b></details>
-
-<details>
-<summary>How to look for a package that provides the command /usr/bin/git? (the package isn't necessarily installed)</summary><br><b>
-
-dnf provides /usr/bin/git
-</b></details>
 
 <a name="questions-linux-apps-and-services"></a>
 ### Applications and Services
